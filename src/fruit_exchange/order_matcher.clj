@@ -56,10 +56,9 @@
               (:size sell-side))
    :buyer (:account-number buy-side)
    :seller (:account-number sell-side)
-   :price (+ (:price sell-side)
-             (/ (- (:price buy-side)
-                   (:price sell-side))
-                2))})
+   :price (/ (+ (:price sell-side)
+                (:price buy-side))
+             2)})
 
 (defn remove-order-size [order-list size]
   (conj (rest order-list)

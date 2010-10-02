@@ -52,6 +52,7 @@
   (fn []
     (with-open [connection (rabbitmq-connection "localhost" "/" "guest" "guest")
                 channel (.createChannel connection)]
+      (.exchangeDeclare channel "fruit-bot" "direct")
       (rabbitmq-run fruit-exchange queue channel "fruit-bot"))))
   
 (defn start-exchange-thread [queue]
